@@ -1,0 +1,895 @@
+economy_decisions = {
+		private_enterprise_assistance = { #民間企業補助
+		
+		icon = decision_eng_trade_unions_support
+		cost = 100
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 25
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.1
+				factor = 1.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = democratic
+				factor = 2.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 1.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -15
+			}
+		}	
+		available = { #使用条件
+			
+			NOT = {has_war = yes}
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.5 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+			add_stability = 0.05
+			##add_extra_state_shared_building_slots = 1 #スロット追加
+			
+			}
+			
+		days_remove = 60 #60日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+		
+			production_speed_industrial_complex_factor = 0.2
+			
+			consumer_goods_factor = 0.10
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+			
+		}
+		
+		
+		
+		private_consignment_of_munitions = { #軍需品の民間委託
+		
+		icon = decision_eng_trade_unions_support
+		cost = 100
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 25
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.1
+				factor = 1.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = democratic
+				factor = 0.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 3.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 1.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 30
+			}
+		}	
+		available = { #使用条件
+			
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.2 #安定度20以上
+			}
+			
+		complete_effect = { #選択時の効果
+			add_war_support = 0.05
+			}
+			
+		days_remove = 60 #60日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+		
+			industrial_capacity_factory = 0.15
+			consumer_goods_factor = 0.05
+			
+			}
+			
+		remove_effect = { #終了後効果
+			
+				
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 4000
+					producer = scope
+				}
+			
+			}
+			
+		}
+
+
+		population_growth_policy = { #人口増加政策
+		
+		icon = decision_eng_trade_unions_support
+		cost = 100
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 25
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.1
+				factor = 1.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = democratic
+				factor = 2.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 2.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 2.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 70
+			}
+		}	
+		available = { #使用条件
+			
+			num_of_factories< 40 #工場数
+			NOT = {has_war = yes}
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.7 #安定度70以上
+			
+			}
+			
+		days_remove = 365 #180日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+		
+			monthly_population = 0.25	#月間人口
+			consumer_goods_factor = 0.20	#消費財要因
+			
+			}
+			
+		remove_effect = { #終了後効果
+		
+			add_manpower = 500000
+			
+			}
+			
+		}
+
+
+
+		focus_on_technical_research = { #技術研究に注力
+		
+		icon = decision_eng_trade_unions_support
+		cost = 150
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = -20
+			
+		}	
+		available = { #使用条件
+			
+			NOT = {has_war = yes}
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.8 #安定度80以上
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 210 #90日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+		
+			research_speed_factor = 0.15
+			consumer_goods_factor = 0.15
+			stability_factor = -0.1
+			
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+			
+		}
+
+
+		acquisition_of_political_power = { #政治的権力の獲得
+		
+		icon = decision_eng_trade_unions_support
+		cost = 25
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 25
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.1
+				factor = 1.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = democratic
+				factor = 0.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 2.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 2.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -15
+			}
+		}	
+		available = { #使用条件
+			
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.5 #安定度50以上
+			}
+			
+		#complete_effect = { #選択時の効果
+			#war_support_factor = 0.05
+			#}
+			
+		days_remove = 90 #90日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+		
+			political_power_gain = 1
+			war_support_weekly_factor = -0.005
+			
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+			
+		}
+
+
+
+		nationalization_of_consumer_goods_factories = { #消費財工場の国有化
+		
+		icon = decision_eng_trade_unions_support
+		cost = 150
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 15
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.3
+				factor = 1.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = democratic
+				factor = 0.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 5.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 2.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 30
+			}
+		}	
+		available = { #使用条件
+			
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.2 #安定度20以上
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			random_owned_controlled_state = {
+
+                add_extra_state_shared_building_slots = 3
+            } #スロット追加
+			add_war_support = -0.15
+			}
+			
+		days_remove = 120 #120日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+		
+			
+			consumer_goods_factor = -0.1
+			industrial_capacity_factory = 0.12
+			industrial_capacity_dockyard = 0.15
+			political_power_factor = -0.05
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+			
+		}
+
+
+		Public_opinion_manipulation = { #世論操作
+		
+		icon = decision_eng_trade_unions_support
+		cost = 100
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 5
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.1
+				factor = 1.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = democratic
+				factor = 3.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 6.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 4.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -15
+			}
+		}	
+		available = { #使用条件
+			
+			NOT = {has_war = yes}
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.2 #安定度20以上
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 190 #190日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+		
+			war_support_weekly = 0.004	#週の戦争協力度
+			stability_weekly = 0.004	#週の安定度
+			political_power_factor = -0.1
+			autonomy_gain = 0.5
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+			
+		}
+
+		
+		
+		Forced_production_increase_policy = { #強制生産増加政策
+		
+		icon = decision_eng_trade_unions_support
+		cost = 50
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 5
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.5
+				factor = 2.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = democratic
+				factor = 0.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 5.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 3.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 20
+			}
+		}	
+		available = { #使用条件
+			
+			NOT = {has_war = no}
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.5 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			add_stability = -0.08
+			
+			}
+			
+		days_remove = 300		#60日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			civilian_factory_use = 5
+			
+			industrial_capacity_factory = 0.2
+			
+			political_power_gain = -0.25
+			
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+			
+		}
+		
+
+		Forced_production_increase_policy2 = { #強制生産増加政策
+		
+		icon = decision_eng_trade_unions_support
+		cost = 50
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 5
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.4
+				factor = 3.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = democratic
+				factor = 1.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 8.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 4.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 20
+			}
+		}	
+		available = { #使用条件
+			
+			NOT = {has_war = no}
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.5 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			add_stability = -0.03
+			
+			}
+			
+		days_remove = 60		#60日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			civilian_factory_use = 3
+			
+			industrial_capacity_factory = 0.10
+			
+			political_power_gain = -0.15
+			
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+			
+		}
+		
+		
+		Acquisition_of_political_power02 = { #政治権力の買収
+		
+		icon = decision_eng_trade_unions_support
+		cost = 0
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = -20
+			
+		}	
+		available = { #使用条件
+			NOT = {has_war = yes}
+			
+			}
+			
+		visible = { #可視条件
+			has_stability > 0.1 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			add_stability = -0.2
+			set_equipment_fraction = 0.9
+			}
+			
+		days_remove = 210		#60日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			drift_defence_factor = 0.35		#イデオロギー動揺対処
+			
+			}
+			
+		remove_effect = { #終了後効果
+			
+			add_political_power = 500
+			
+			}
+			
+		}
+
+		Military_exercises = { #軍事演習
+		
+		icon = decision_eng_trade_unions_support
+		cost = 0
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = -1000
+			
+		}	
+		available = { #使用条件
+			NOT = {has_war = yes}
+			command_power > 40
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.1 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			
+			add_command_power = -40
+			}
+			
+		days_remove = 90		#60日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			experience_gain_army = 0.50
+			experience_gain_air = 0.50
+			experience_gain_navy = 0.50
+			}
+			
+		remove_effect = { #終了後効果
+			add_war_support = 0.05
+			add_threat = 2	#国際緊張度は1++
+			}
+			
+		}
+
+		Peace_conference = { #平和会議
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = -20
+			
+		}	
+		icon = decision_eng_trade_unions_support
+		cost = 50
+		
+		available = { #使用条件
+			NOT = {has_war = yes}
+			
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.1 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+
+			}
+			
+		days_remove = 120		#60日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			
+			}
+			
+		remove_effect = { #終了後効果
+			add_stability = 0.05
+			add_threat = -1.5
+			}
+			
+		}
+
+
+		Partisan_Suppression_Special_Budget = { #パルチザン鎮圧特別予算
+		
+		icon = decision_eng_trade_unions_support
+		cost = 25
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 25
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.3
+				factor = 1.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = democratic
+				factor = 1.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 4.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 1.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -15
+			}
+		}	
+		available = { #使用条件
+			
+			
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.1 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+			set_equipment_fraction = 0.9
+
+			}
+			
+		days_remove = 365		#60日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			resistance_decay = 0.1	#抵抗減衰
+			resistance_growth = -0.10 #抵抗成長
+			
+			}
+			
+		remove_effect = { #終了後効果
+			add_stability = 0.05
+			}
+			
+		}
+
+		Unification_of_overseas_territories = { #海外領地の統一
+		
+		icon = decision_eng_trade_unions_support
+		cost = 50
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = -20
+			
+		}	
+		available = { #使用条件
+			NOT = {has_war = yes}
+			
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.5 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+
+			}
+			
+		days_remove = 365		#60日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			compliance_gain = 0.25
+			#compliance_growth = 0.1
+
+			}
+			
+		remove_effect = { #終了後効果
+			add_stability = -0.20
+			add_state_modifier = {
+				modifier = {
+					recruitable_population_factor = 0.03
+				}
+			}
+			}
+			
+		}
+		
+		New_laboratory = { #新たな研究所
+		
+		icon = decision_eng_trade_unions_support
+		cost = 200
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 25
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.1
+				factor = 2.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = democratic
+				factor = 2.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 1.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -15
+			}
+		}	
+		available = { #使用条件
+			NOT= {has_war = yes}
+			num_of_factories > 50 #工場数
+			has_tech = mechanical_computing 
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.7 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 365		#60日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			political_power_gain = -1	#政治的権力の獲得
+			consumer_goods_factor = 0.10	#消費財工場
+			
+			}
+			
+		remove_effect = { #終了後効果
+			add_research_slot = 1
+			}
+			
+		}
+
+		Transactions_with_underground_organizations = { #地下組織との取引
+		
+		icon = decision_eng_trade_unions_support
+		cost = 100
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 25
+			modifier = { #与党が民主主義なら0.5倍
+				has_government = democratic
+				factor = 0.5
+			}
+			modifier = { #与党が共産主義なら5.5倍
+				has_government = Communism 
+				factor = 1.5
+			}
+			modifier = { #与党がファシズムなら15倍
+				has_government = Fascism  
+				factor = 1.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 20
+			}
+		}	
+		available = { #使用条件
+			
+			}
+			
+		visible = { #可視条件
+			
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 140		#60日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			Intelligence_agency_defense = 0.05	# 防諜
+			intel_network_gain_factor	= 0.05	# 情報網強度向上
+			political_power_factor 		= 0.15  # 日毎の政治力
+			consumer_goods_factor		= 0.05	# 消費財工場 
+			}
+			
+		remove_effect = { #終了後効果
+			
+			}
+			
+		}
+
+		
+		Dispatch_of_Volunteers = { #義勇兵の派遣
+		
+		icon = decision_eng_trade_unions_support
+		cost = 100
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 25
+			modifier = { #与党が民主主義なら0.5倍
+				has_government = democratic
+				factor = 0.5
+			}
+			modifier = { #与党が共産主義なら5.5倍
+				has_government = Communism 
+				factor = 1.5
+			}
+			modifier = { #与党がファシズムなら15倍
+				has_government = Fascism  
+				factor = 1.5
+			}
+			modifier = { #与党が中道なら+20
+				has_government = neutrality 
+				add = 20
+			}
+		}	
+		available = { #使用条件
+			
+			}
+			
+		visible = { #可視条件
+			
+			}
+			
+		complete_effect = { #選択時の効果
+			set_rule = {
+				can_send_volunteers = yes
+			}
+		}
+			
+		days_remove = 365		#60日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			political_power_gain = -0.75	#政治的権力の獲得
+			send_volunteers_tension	= -0.1 #義勇軍派遣の国際緊張による制限
+			send_volunteer_divisions_required = -0.1	#義勇軍派遣のために要求される師団
+			send_volunteer_size	= 5 #義勇軍の最大師団数
+			air_volunteer_cap	= 100 #航空義勇軍の制限
+		}
+			
+		remove_effect = { #終了後効果
+			add_war_support = 0.1	#現在のスコープの現在の戦争サポート値に追加します。
+		}			
+	}
+
+
+
+
+}

@@ -1,0 +1,971 @@
+National_decision = {
+
+		Political_reform = { #政治改革
+		
+		icon = decision_category_generic
+		cost = 0 #カウント
+		fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+
+
+		available = { #使用条件
+            date > has_start_date  #ゲーム開始日より未来
+			}
+			
+		visible = { #可視条件
+			#
+			}
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 10
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.05
+				factor = 2.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				factor = 1.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				add = 5.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				add = 15
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -20
+			}
+		}
+
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 70 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+            war_support_weekly = 0.01
+			political_power_cost = 0.15	# 利用コスト
+			}
+			
+		remove_effect = { #終了後効果
+            add_political_power = 150
+			}
+		}
+
+        Further_political_reform = { #さらなる政治改革
+		
+		icon = decision_category_generic
+		cost = 0
+		#カウント
+		fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+
+		available = { #使用条件
+			AND = {
+				date > 1936.06.01	# ゲーム開始日から今までの経過日数
+				has_tech = radio	# 無線通信の研究が出来ている  
+			}	
+            
+			}
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 5
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.1
+				factor = 3.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				factor = 1.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				add = 3.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				add = 10
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -30
+			}
+		}	
+		visible = { #可視条件
+			
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 70 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+            war_support_weekly = 0.01
+            stability_weekly = 0.01
+			political_power_cost = 0.15	# 利用コスト
+			}
+			
+		remove_effect = { #終了後効果
+            add_political_power = 200
+			
+			
+			}
+			
+
+		}
+        Strengthening_social_security = { #社会保障の強化
+		
+		icon = decision_category_generic
+		cost = 0
+		#カウント
+		fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+
+		available = { #使用条件
+			AND = {
+				date > 1936.09.01	# ゲーム開始日から今までの経過日数
+				
+			}	
+            
+			}
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 15
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.2
+				factor = 2.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				factor = 0.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				add = 1.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 2
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -25
+			}
+		}	
+		visible = { #可視条件
+			
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 70 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+            political_power_cost = 0.15	# 利用コスト
+            weekly_manpower = 750	# 週毎の人的
+			}
+			
+		remove_effect = { #終了後効果
+            add_stability = 0.05
+			}
+			
+
+		}
+        Strengthening_educational_institutions = { #教育機関の強化
+		
+		icon = decision_category_generic
+		cost = 0
+		#カウント
+		fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+
+		available = { #使用条件
+			AND = {
+				date > 1936.12.01	# ゲーム開始日から今までの経過日数
+				has_tech = mechanical_computing  # 特定の技術を研究している
+			}	
+            
+			}
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 5
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.3
+				factor = 3.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				factor = 1.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 1.2
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 3
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -30
+			}
+		}	
+		visible = { #可視条件
+			
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 70 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+            political_power_cost = 0.15	# 利用コスト
+            research_speed_factor = 0.05
+			}
+			
+		remove_effect = { #終了後効果
+            add_research_slot = 1
+			}
+			
+
+		}
+        Public_works_promotion = { #公共事業推進
+		
+		icon = decision_category_generic
+		cost = 0
+		#カウント
+		fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+
+		available = { #使用条件
+			AND = {
+			date > 1937.03.01	# ゲーム開始日から今までの経過日数
+			has_tech = construction2  # 特定技術を研究済み
+			}	
+            
+			}
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 20
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.3
+				factor = 1
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				factor = 2.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				add = 15.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 1.6
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 30
+			}
+		}	
+		visible = { #可視条件
+			
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 70 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+            political_power_cost = 0.15	# 利用コスト
+            production_speed_infrastructure_factor = 0.1　#インフラ建造速度
+			}
+			
+		remove_effect = { #終了後効果
+            random_owned_controlled_state = {
+                add_extra_state_shared_building_slots = 2
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+			}
+			
+
+		}
+        Light_industry_promotion = { #軽工業推進
+		
+			icon = decision_category_generic
+			cost = 0
+			#カウント
+			fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+
+			available = { #使用条件
+				AND = {
+					date > 1937.06.01	# ゲーム開始日から今までの経過日数
+					has_tech = improved_machine_tools   # 特定技術を研究済み
+				}
+
+				
+				}
+			ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+				base = 20
+				modifier = { #国際緊張度が５％以上ならば2.5倍
+					threat > 0.3
+					factor = 2.5
+				}
+				modifier = { #与党が民主主義なら1.5倍
+					has_government = Democracy
+					factor = 1.5
+				}
+				modifier = { #与党が共産主義なら5.5加算
+					has_government = Communism 
+					factor = 2
+				}
+				modifier = { #与党がファシズムなら15加算
+					has_government = Fascism  
+					factor = 2
+				}
+				modifier = { #与党が中道なら-20
+					has_government = neutrality 
+					add = 50
+				}
+			}	
+			visible = { #可視条件
+				
+				}
+				
+			complete_effect = { #選択時の効果
+				
+				}
+				
+			days_remove = 70 #30日間この間に継続効果が発動
+			
+			modifier = { #持続効果
+				political_power_cost = 0.15	# 利用コスト
+				production_speed_industrial_complex_factor = 0.15
+				}
+				
+			remove_effect = { #終了後効果
+				random_owned_controlled_state = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+        Heavy_industry_promotion = { #重工業推進
+			
+			icon = decision_category_generic
+			cost = 0
+			#カウント
+			fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+
+			available = { #使用条件
+				AND = {
+					date > 1937.09.01	# ゲーム開始日から今までの経過日数
+					has_tech = advanced_machine_tools # 特定技術の研究完了
+				}	
+			}
+			ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+				base = 10
+				modifier = { #国際緊張度が５％以上ならば2.5倍
+					threat > 0.5
+					factor = 5.5
+				}
+				modifier = { #与党が民主主義なら1.5倍
+					has_government = Democracy
+					factor = 1.1
+				}
+				modifier = { #与党が共産主義なら5.5加算
+					has_government = Communism 
+					factor = 1.5
+				}
+				modifier = { #与党がファシズムなら15加算
+					has_government = Fascism  
+					factor = 2
+				}
+				modifier = { #与党が中道なら-20
+					has_government = neutrality 
+					add = 60
+				}
+			}	
+			visible = { #可視条件
+				
+				}
+				
+			complete_effect = { #選択時の効果
+				
+				}
+				
+			days_remove = 70 #30日間この間に継続効果が発動
+			
+			modifier = { #持続効果
+				political_power_cost = 0.15	# 利用コスト
+				production_speed_arms_factory_factor = 0.15
+			}
+				
+			remove_effect = { #終了後効果
+				random_owned_controlled_state = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+        Extension_of_Navy_Shipyard = { #海軍造船所の増築
+		
+			icon = decision_category_generic
+			cost = 0
+			#カウント
+			fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+
+			available = { #使用条件	
+				AND = {
+					date > 1937.12.01	# ゲーム開始日から今までの経過日数
+					num_of_available_civilian_factories　>　10		#利用可能な民需工場数＞10
+				}
+			}
+			ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+				base = 15
+				modifier = { #国際緊張度が５％以上ならば2.5倍
+					threat > 0.5
+					factor = 2.5
+				}
+				modifier = { #与党が民主主義なら1.5倍
+					has_government = Democracy
+					factor = 0.5
+				}
+				modifier = { #与党が共産主義なら5.5加算
+					has_government = Communism 
+					factor = 2
+				}
+				modifier = { #与党がファシズムなら15加算
+					has_government = Fascism  
+					factor = 3
+				}
+				modifier = { #与党が中道なら-20
+					has_government = neutrality 
+					add = 50
+				}
+			}	
+			visible = { #可視条件
+				
+				}
+				
+			complete_effect = { #選択時の効果
+				
+				}
+				
+			days_remove = 70 #30日間この間に継続効果が発動
+			
+			modifier = { #持続効果
+				political_power_cost = 0.15	# 利用コスト
+				production_speed_dockyard_factor = 0.15
+			}
+				
+			remove_effect = { #終了後効果
+				random_owned_controlled_state = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+        New_draft = { #新たな徴兵
+			
+			icon = decision_category_generic
+			cost = 0
+			#カウント
+			fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+			available = { #使用条件
+					
+				AND = {
+					date > 1938.03.01	# ゲーム開始日から今までの経過日数
+					has_war = yes	# 戦時
+				}
+			}
+			ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+				base = 5
+				modifier = { #国際緊張度が５％以上ならば2.5倍
+					threat > 0.4
+					factor = 5.5
+				}
+				modifier = { #与党が民主主義なら1.5倍
+					has_government = Democracy
+					factor = 0.5
+				}
+				modifier = { #与党が共産主義なら5.5加算
+					has_government = Communism 
+					factor = 10
+				}
+				modifier = { #与党がファシズムなら15加算
+					has_government = Fascism  
+					factor = 4
+				}
+				modifier = { #与党が中道なら-20
+					has_government = neutrality 
+					add = 50
+				}
+			}	
+			visible = { #可視条件
+				}
+			complete_effect = { #選択時の効果
+				}
+			days_remove = 70 #30日間この間に継続効果が発動
+			modifier = { #持続効果
+				political_power_cost = 0.15	# 利用コスト
+				month_population = 0.25
+				recruitable_population = 0.01
+				}
+			remove_effect = { #終了後効果
+				add_manpower = 500000
+				}
+		}
+
+        New_steel_mill = { #新たな製鉄工場
+			
+			icon = decision_category_generic
+			cost = 0
+			#カウント
+			fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+			available = { #使用条件
+					
+				AND = {
+					date > 1938.06.01	# ゲーム開始日から今までの経過日数
+					has_tech = excavation3  # 特定技術を研究済み
+				}
+			}
+			ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+				base = 25
+				modifier = { #国際緊張度が５％以上ならば2.5倍
+					threat > 0.1
+					factor = 1.5
+				}
+				modifier = { #与党が民主主義なら1.5倍
+					has_government = Democracy
+					factor = 2.5
+				}
+				modifier = { #与党が共産主義なら5.5加算
+					has_government = Communism 
+					factor = 0.5
+				}
+				modifier = { #与党がファシズムなら15加算
+					has_government = Fascism  
+					factor = 1.5
+				}
+				modifier = { #与党が中道なら-20
+					has_government = neutrality 
+					add = -15
+				}
+			}	
+			visible = { #可視条件
+				}
+			complete_effect = { #選択時の効果
+				}
+			days_remove = 70 #30日間この間に継続効果が発動
+			modifier = { #持続効果 
+				political_power_cost = 0.15	# 利用コスト
+				}
+			remove_effect = { #終了後効果
+					random_owned_controlled_state = {
+						add_resource = {
+							type = steel
+							amount = 8
+					}
+				}
+			}
+		}
+        Synthetic_metal_factory = { #合成金属工場
+			icon = decision_category_generic
+			cost = 0
+			#カウント
+			fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+			available = { #使用条件	
+				AND = {
+					date > 1938.09.01	# ゲーム開始日から今までの経過日数
+					has_tech = excavation4  # 特定技術を研究済み
+				}
+			}
+			ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+				base = 25
+				modifier = { #国際緊張度が５％以上ならば2.5倍
+					threat > 0.1
+					factor = 1.5
+				}
+				modifier = { #与党が民主主義なら1.5倍
+					has_government = Democracy
+					factor = 2.5
+				}
+				modifier = { #与党が共産主義なら5.5加算
+					has_government = Communism 
+					factor = 0.5
+				}
+				modifier = { #与党がファシズムなら15加算
+					has_government = Fascism  
+					factor = 1.5
+				}
+				modifier = { #与党が中道なら-20
+					has_government = neutrality 
+					add = -15
+				}
+			}		
+			visible = { #可視条件
+				}
+			complete_effect = { #選択時の効果
+				}
+			days_remove = 70 #30日間この間に継続効果が発動
+			modifier = { #持続効果
+				political_power_cost = 0.15	# 利用コスト
+				}
+			remove_effect = { #終了後効果
+					random_owned_controlled_state = {
+						add_resource = {
+						type = steel
+						amount = 16
+						}
+					}
+					random_owned_controlled_state = {
+						add_resource = {
+							type = tungsten 
+							amount = 8
+						}
+					}	
+				}
+		}
+
+
+
+        National_growth_bonus_01 = { #国家成長ボーナス
+		
+		icon = decision_category_generic
+		cost = 0
+		#カウント
+		fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+
+
+		available = { #使用条件
+				num_of_civilian_factories > 10  #民需工場数カウント
+                num_of_civilian_factories < 20  #民需工場数カウント
+			}
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 50
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.1
+				factor = 1.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				factor = 2.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 1.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -15
+			}
+		}		
+		visible = { #可視条件
+			
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 70 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+            
+            production_speed_industrial_complex_factor = 0.10
+			}
+			
+		remove_effect = { #終了後効果
+            random_owned_controlled_state = {
+                add_extra_state_shared_building_slots = 3
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 3
+                    instant_build = yes
+                }
+            }
+			}
+			
+
+		}
+
+        National_growth_bonus_02 = { #国家成長ボーナス
+		
+		icon = decision_category_generic
+		cost = 0
+		#カウント
+		fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 50
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.1
+				factor = 1.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				factor = 2.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 1.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -15
+			}
+		}	
+
+		available = { #使用条件
+				num_of_civilian_factories > 20  #民需工場数カウント
+                num_of_civilian_factories < 30  #民需工場数カウント
+			}
+			
+		visible = { #可視条件
+			
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 70 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+            
+            production_speed_industrial_complex_factor = 0.10
+			}
+			
+		remove_effect = { #終了後効果
+            random_owned_controlled_state = {
+                add_extra_state_shared_building_slots = 3
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 3
+                    instant_build = yes
+                }
+            }
+			}
+			
+
+		}
+
+        National_growth_bonus_03 = { #国家成長ボーナス
+		
+		icon = decision_category_generic
+		cost = 0
+		#カウント
+		fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 50
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.1
+				factor = 1.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				factor = 2.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 1.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -15
+			}
+		}	
+
+		available = { #使用条件
+				num_of_civilian_factories > 40  #民需工場数カウント
+                num_of_civilian_factories < 50  #民需工場数カウント
+			}
+			
+		visible = { #可視条件
+			
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 70 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+            
+            production_speed_industrial_complex_factor = 0.10
+			}
+			
+		remove_effect = { #終了後効果
+            random_owned_controlled_state = {
+                add_extra_state_shared_building_slots = 3
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 3
+                    instant_build = yes
+                }
+            }
+			}
+			
+
+		}
+        National_growth_bonus_04 = { #国家成長ボーナス
+		
+		icon = decision_category_generic
+		cost = 0
+		#カウント
+		fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 50
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.1
+				factor = 1.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				factor = 2.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 1.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -15
+			}
+		}	
+
+		available = { #使用条件
+				num_of_civilian_factories > 50  #民需工場数カウント
+                num_of_civilian_factories < 60  #民需工場数カウント
+			}
+			
+		visible = { #可視条件
+			
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 70 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+            
+            production_speed_industrial_complex_factor = 0.10
+			}
+			
+		remove_effect = { #終了後効果
+            random_owned_controlled_state = {
+                add_extra_state_shared_building_slots = 3
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 3
+                    instant_build = yes
+                }
+            }
+			}
+			
+
+		}
+        National_growth_bonus_05 = { #国家成長ボーナス
+		
+		icon = decision_category_generic
+		cost = 0
+		#カウント
+		fire_only_once = yes #削除された後は再度有効になりません(デフォルトNO)
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 50
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.1
+				factor = 1.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				factor = 2.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 1.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -15
+			}
+		}	
+
+		available = { #使用条件
+				num_of_factories > 100   #工場数カウント
+                num_of_factories < 140   #工場数カウント
+			}
+			
+		visible = { #可視条件
+			
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 70 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+            production_speed_buildings_factor = 0.20
+            
+			}
+			
+		remove_effect = { #終了後効果
+            random_owned_controlled_state = {
+                add_extra_state_shared_building_slots = 5
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 5
+                    instant_build = yes
+                }
+            }
+			}
+			
+
+		}
+
+
+
+}

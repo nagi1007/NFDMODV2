@@ -1,0 +1,12 @@
+political_policy = {
+	icon = generic_economy
+
+}
+
+research_theory = {
+	icon = generic_economy
+
+}
+National_decision = {
+	icon = decision_category_generic
+}

@@ -1,0 +1,134 @@
+war_measures = {
+		war_speech ={ #戦争演説
+	icon = generic_propaganda
+	cost = 100
+	ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 10
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				threat > 0.5
+				factor = 10
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				factor = 5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 0.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 20
+			}
+		}
+	available = { #使用条件
+		has_political_power> 5 #使用可能な政治力
+		}
+	
+	
+	visible = {
+		has_war = yes
+		}
+	complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 30 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			war_support_weekly = 0.02
+			political_power_factor = 0.02
+			
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+
+		}
+
+
+	territorial_claim ={ #領土請求
+	icon = generic_propaganda
+	cost = 100
+	
+	available = { #使用条件
+		has_political_power> 5 #使用可能な政治力
+		}
+	
+	
+	visible = {
+		has_war = yes
+		}
+	#complete_effect = { #選択時の効果
+			
+			
+			#}
+			
+		days_remove = 60 #60日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			war_support_weekly = 0.01
+			justify_war_goal_time = -0.15
+			political_power_factor = -0.03
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+
+		}
+
+
+		air_raid_measures ={ #空襲対策
+	icon = generic_propaganda
+	cost = 200
+	
+	available = { #使用条件
+		
+		}
+	
+	
+	visible = {
+		has_war = yes
+		}
+	#complete_effect = { #選択時の効果
+			
+			#}
+			
+		days_remove = 90 #90日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			industry_air_damage_factor = -0.15
+			industry_repair_factor = 0.2
+			stability_factor = 0.05
+			
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+	}

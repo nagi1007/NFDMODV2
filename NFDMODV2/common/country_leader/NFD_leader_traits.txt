@@ -1,0 +1,12 @@
+leader_traits = {
+	
+	Test = { # 特性名
+		random = no
+		
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+}

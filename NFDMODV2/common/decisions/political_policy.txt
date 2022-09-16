@@ -1,0 +1,541 @@
+political_policy = {
+
+		communist_speech = { #共産主義者の演説
+		
+		icon = decision_eng_trade_unions_support
+		cost = 70
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 10
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				has_stability < 0.5
+				factor = 2.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				add = -5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 2.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 0.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -5
+			}
+		}	
+		available = { #使用条件
+			
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.2 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+			add_war_support = -0.05
+			}
+			
+		days_remove = 30 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+		
+			
+			communism_drift = 0.5
+			industrial_capacity_factory = 0.05
+			Industrial_Capacity_Dockyard = 0.05
+			research_speed_factor = 0.05
+			
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+			
+		}
+
+
+		democracy_speech = { #民主主義者の演説
+		
+		icon = decision_eng_trade_unions_support
+		cost = 70
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 10
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				has_stability > 0.5
+				factor = 1.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				factor = 3.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 0.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 10
+			}
+		}
+		available = { #使用条件
+			
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.2 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+			add_war_support = -0.10
+			add_stability = 0.10
+			}
+			
+		days_remove = 30 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+		
+			
+			democratic_drift = 0.5
+			political_power_gain = 0.5
+			research_speed_factor = 0.05
+			production_speed_industrial_complex_factor = 0.15
+			
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+			
+		}
+
+
+		fascism_speech = { #国粋主義者の演説
+		
+		icon = decision_eng_trade_unions_support
+		cost = 70
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 10
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				has_stability < 0.5
+				factor = 2.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				add = -5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 4.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = -3
+			}
+		}
+		available = { #使用条件
+			
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.2 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+			add_war_support = 0.10
+			add_stability = -0.10
+			}
+			
+		days_remove = 30 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+		
+			
+			fascism_drift = 0.5
+			monthly_population = 0.4
+			consumer_goods_factor = -0.05
+			production_speed_arms_factory_factor = 0.1
+			
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+			
+		}
+
+		royalist_speech = { #王党派の演説
+		
+		icon = decision_eng_trade_unions_support
+		cost = 70
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 10
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				has_stability < 0.2
+				factor = 5.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				add = -5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 0.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 30
+			}
+		}
+		available = { #使用条件
+			
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.2 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+			
+			}
+			
+		days_remove = 30 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+		
+			war_support_weekly = 0.01
+			neutrality_drift = 0.5
+			political_power_gain = 0.25
+			research_speed_factor = -0.05
+			stability_weekly = 0.01
+			
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+			
+		}
+
+
+		clergyman_speech = { #聖職者の演説
+		
+		icon = decision_eng_trade_unions_support
+		cost = 70
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 10
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				has_stability < 0.1
+				factor = 4.5
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				add = -8
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 0.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 20
+			}
+		}
+		available = { #使用条件
+			
+			}
+			
+		visible = { #可視条件
+			has_stability> 0.2 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+			add_war_support = -0.10
+			add_stability = 0.15
+			}
+			
+		days_remove = 30 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+		
+			consumer_goods_factor = -0.10
+			neutrality_drift = 0.5
+			political_power_gain = 1
+			justify_war_goal_time = 0.25
+			enemy_justify_war_goal_time = 0.25
+			research_speed_factor = -0.10
+			
+			
+			}
+			
+		remove_effect = { #終了後効果
+		
+			
+			
+			}
+			
+		}
+
+		To_fascism = { #ファシズムへ
+		
+		icon = decision_eng_trade_unions_support
+		cost = 100
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 10
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				fascism > 0.5
+				factor = 10
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				add = -5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 10
+			}
+		}
+		available = { #使用条件
+			fascism > 0.5
+			NOT = {
+				has_government = fascism
+				}	
+			}
+			
+		visible = { #可視条件
+			has_stability > 0.3 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+		set_politics = {
+			ruling_party = fascism
+		}
+		
+					
+				
+			}
+		days_remove = 30 #30日間この間に継続効果が発動
+		modifier = { #持続効果
+			}
+		remove_effect = { #終了後効果
+			add_country_leader_trait = dictator
+			add_country_leader_trait = anti_democrat
+			add_country_leader_trait = fascist_demagogue
+			add_country_leader_trait = propaganda_expert
+			}
+			
+		}
+
+		To_communism = { #共産主義勢力へ
+		
+		icon = decision_eng_trade_unions_support
+		cost = 100
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 10
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				communism > 0.5
+				factor = 10
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				add = -5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 4.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 0.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 20
+			}
+		}
+		available = { #使用条件
+			communism > 0.5	
+			NOT = {
+				has_government = communism
+			}
+			
+			}
+			
+		visible = { #可視条件
+			has_stability > 0.3 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+			set_politics = {
+			ruling_party = communism
+		}
+			}
+			
+		days_remove = 30 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			
+			
+			}
+			
+		remove_effect = { #終了後効果
+			add_country_leader_trait = el_jefe_maximo
+			add_country_leader_trait = red_army_organizer
+			add_country_leader_trait = revolutionary_general
+			}
+			
+		}
+		To_democratic = { #民主主義へ
+		
+		icon = decision_eng_trade_unions_support
+		cost = 100
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 10
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				democratic > 0.5
+				factor = 10
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				factor = 5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 0.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 20
+			}
+		}
+		available = { #使用条件
+			democratic > 0.5	
+			NOT = {
+				has_government = democratic
+			}
+			
+			}
+			
+		visible = { #可視条件
+			has_stability > 0.3 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+				set_politics = {
+			ruling_party = democratic
+		}
+			}
+			
+		days_remove = 30 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			}
+		remove_effect = { #終了後効果
+			add_country_leader_trait = tenacious_negotiator
+			add_country_leader_trait = staunch_constitutionalist
+			add_country_leader_trait = dealbroker
+			add_country_leader_trait = chamberlain_appeaser
+			add_country_leader_trait = captain_of_industry
+			}
+			
+		}
+		To_neutrality = { #王党派へ
+		
+		icon = decision_eng_trade_unions_support
+		cost = 100
+		ai_will_do = {	#AIがそれを選択する可能性計算(baseが基礎値 D:1 factorが要素 小数点以下第三位)
+			base = 10
+			modifier = { #国際緊張度が５％以上ならば2.5倍
+				neutrality > 0.5
+				factor = 10
+			}
+			modifier = { #与党が民主主義なら1.5倍
+				has_government = Democracy
+				factor = 0.5
+			}
+			modifier = { #与党が共産主義なら5.5加算
+				has_government = Communism 
+				factor = 0.5
+			}
+			modifier = { #与党がファシズムなら15加算
+				has_government = Fascism  
+				factor = 0.5
+			}
+			modifier = { #与党が中道なら-20
+				has_government = neutrality 
+				add = 50
+			}
+		}
+		available = { #使用条件
+			neutrality  > 0.5	
+			NOT = {
+				has_government = neutrality
+			}
+			
+			
+			}
+			
+		visible = { #可視条件
+			has_stability > 0.3 #安定度50以上
+			}
+			
+		complete_effect = { #選択時の効果
+		set_politics = {
+			ruling_party = neutrality
+		}
+			}
+			
+		days_remove = 30 #30日間この間に継続効果が発動
+		
+		modifier = { #持続効果
+			}
+		remove_effect = { #終了後効果
+			add_country_leader_trait = the_sacred_king
+			add_country_leader_trait = humble
+			add_country_leader_trait = autocratic_imperialist
+			}
+			
+		}
+		
+
+
+	}
